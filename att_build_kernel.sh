@@ -24,8 +24,8 @@ if [ "$CPU_JOB_NUM" = "" ] ; then
 	CPU_JOB_NUM=8
 fi
 
-TOOLCHAIN=/opt/toolchains/arm-2009q3/bin/
-TOOLCHAIN_PREFIX=arm-none-linux-gnueabi-
+TOOLCHAIN=~/mydroid/prebuilt/linux-x86/toolchain/arm-eabi-4.3.1/bin/
+TOOLCHAIN_PREFIX=arm-eabi-
 
 KERNEL_BUILD_DIR=`pwd`/Kernel
 ANDROID_OUT_DIR=`pwd`/Android/out/target/product/GT-P1000
