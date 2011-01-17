@@ -24,10 +24,10 @@ if [ "$CPU_JOB_NUM" = "" ] ; then
 	CPU_JOB_NUM=8
 fi
 
-TOOLCHAIN=~/mydroid/prebuilt/linux-x86/toolchain/arm-eabi-4.3.1/bin/
+TOOLCHAIN=~/mydroid/prebuilt/linux-x86/toolchain/arm-eabi-4.4.0/bin/
 TOOLCHAIN_PREFIX=arm-eabi-
 
-KERNEL_BUILD_DIR=`pwd`/Kernel
+KERNEL_BUILD_DIR=`pwd`/
 ANDROID_OUT_DIR=`pwd`/Android/out/target/product/GT-P1000
 
 export PRJROOT=$PWD
