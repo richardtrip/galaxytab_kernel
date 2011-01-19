@@ -190,6 +190,8 @@ void dvs_set_for_1dot2Ghz (int onoff) {
 	return;
 }
 
+extern int exp_UV_mV[6];
+
 static int set_max8998(unsigned int pwr, enum perf_level p_lv)
 {
 	int voltage;
@@ -197,17 +199,19 @@ static int set_max8998(unsigned int pwr, enum perf_level p_lv)
 	int ret = 0;
 	const unsigned int (*frequency_match_tab)[4] = frequency_match[S5PC11X_FREQ_TAB];	
 
-	DBG("%s : p_lv = %d : pwr = %d \n", __FUNCTION__, p_lv,pwr);
+//	DBG("%s : p_lv = %d : pwr = %d \n", __FUNCTION__, p_lv,pwr);
 
 	if(pwr == PMIC_ARM) {
-		voltage = frequency_match_tab[p_lv][pwr + 1];
+//		voltage = frequency_match_tab[p_lv][pwr + 1];
+		voltage = frequency_match_tab[p_lv][pwr + 1] - exp_UV_mV[p_lv];
 
 		if(voltage == s_arm_voltage)
 			return ret;
 
 		pmic_val = voltage * 1000;
 		
-		DBG("regulator_set_voltage =%d\n",voltage);
+//		DBG("regulator_set_voltage =%d\n",voltage);
+		DBG("regulator_set_voltage =%dmA @ %dMHz-%d UV=%d\n",voltage,frequency_match_tab[p_lv][pwr]/1000,p_lv,exp_UV_mV[p_lv]);
 		/*set Arm voltage*/
 		ret = regulator_set_voltage(Reg_Arm,pmic_val,pmic_val);
 	        if(ret != 0)
@@ -231,7 +235,7 @@ static int set_max8998(unsigned int pwr, enum perf_level p_lv)
 
 		pmic_val = voltage * 1000;
 
-		DBG("regulator_set_voltage = %d\n",voltage);
+		//DBG("regulator_set_voltage = %d\n",voltage);
 		/*set Arm voltage*/
 		ret = regulator_set_voltage(Reg_Int, pmic_val, pmic_val);
 	        if(ret != 0)
@@ -276,7 +280,7 @@ EXPORT_SYMBOL_GPL(set_pmic_gpio);
 
 int set_voltage(enum perf_level p_lv)
 {
-	DBG("%s : p_lv = %d\n", __FUNCTION__, p_lv);
+	//DBG("%s : p_lv = %d\n", __FUNCTION__, p_lv);
 	if(step_curr != p_lv) 
 	{
 		/*Commenting gpio initialisation*/
@@ -288,7 +292,6 @@ int set_voltage(enum perf_level p_lv)
 	}
 	return 0;
 }
-
 EXPORT_SYMBOL(set_voltage);
 
 int set_gpio_dvs(int armSet)
