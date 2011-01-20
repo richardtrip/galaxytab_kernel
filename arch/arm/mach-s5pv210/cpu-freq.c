@@ -39,6 +39,8 @@
 #define USE_DVS
 //#define GPIO_BASED_DVS
 
+#define USE_1DOT2GHZ 1
+
 #define DBG(fmt...)
 //#define DBG(fmt...) printk(fmt)
 
