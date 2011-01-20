@@ -42,7 +42,7 @@
 #define DBG(fmt...)
 //#define DBG(fmt...) printk(fmt)
 
-#define USE_1DOT2GHZ 0
+#define USE_1DOT2GHZ 1
 #define DVFS_SYSFS_FREQ_TAB
 
 unsigned int dvfs_change_direction;
