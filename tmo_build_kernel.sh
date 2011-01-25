@@ -71,7 +71,6 @@ BUILD_KERNEL()
   export X_BUILD_LOCALE2=P1_ATT
   
 	make ARCH=arm p1_android_rfs_eur_defconfig
-  cp -f ./drivers/video/samsung/rotate_90_SGH_T849_1200x600.h ./drivers/video/samsung/rotate_90_GT_P1000_1200x600.h
 	# make kernel
 
 	make -j$CPU_JOB_NUM ARCH=arm CROSS_COMPILE=$TOOLCHAIN/$TOOLCHAIN_PREFIX
