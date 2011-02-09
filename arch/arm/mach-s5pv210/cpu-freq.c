@@ -37,7 +37,7 @@
 
 #define ENABLE_DVFS_LOCK_HIGH 1
 #define USE_DVS
-//#define GPIO_BASED_DVS
+#define GPIO_BASED_DVS
 
 #define USE_1DOT2GHZ 1
 
@@ -79,37 +79,21 @@ bool g_dvfs_fix_lock_limit = false; // global variable to avoid up frequency sca
 
 /* frequency */
 static struct cpufreq_frequency_table s5pc110_freq_table_1GHZ[] = {
-/*
 	{L0, 1000*1000},
 	{L1, 800*1000},
 	{L2, 400*1000},
 	{L3, 200*1000},
 	{L4, 100*1000},
-*/
-	{L0, 1200*1000},
-	{L1, 1000*1000},
-	{L2, 800*1000},
-	{L3, 400*1000},
-	{L4, 200*1000},
-	{L5, 100*1000},
 	{0, CPUFREQ_TABLE_END},
 };
 
 /*Assigning different index for fast scaling up*/
 static unsigned char transition_state_1GHZ[][2] = {
-/*
         {1, 0},
         {2, 0},
         {3, 1},
         {4, 2},
         {4, 3},
-*/
-        {1, 0},
-        {2, 0},
-        {3, 1},
-        {4, 2},
-        {5, 3},
-        {5, 3},
 };
 
 /* frequency */
@@ -718,13 +702,7 @@ static int __init s5pc110_cpu_init(struct cpufreq_policy *policy)
 	policy->cur = policy->min = policy->max = s5pc110_getspeed(0);
 	//spin_lock_irqsave(&g_cpufreq_lock, irqflags);
 
-		S5PC11X_FREQ_TAB = 0;
-		S5PC11X_MAXFREQLEVEL = 5;
-		MAXFREQ_LEVEL_SUPPORTED = 5;
-		g_dvfs_high_lock_limit = 4;
-
-/*
-#if USE_1DOT2GHZ //jj
+#if USE_1DOT2GHZ
 		S5PC11X_FREQ_TAB = 1;
 		S5PC11X_MAXFREQLEVEL = 5;
 		MAXFREQ_LEVEL_SUPPORTED = 6;
@@ -735,7 +713,7 @@ static int __init s5pc110_cpu_init(struct cpufreq_policy *policy)
 		MAXFREQ_LEVEL_SUPPORTED = 5;
 		g_dvfs_high_lock_limit = 4;
 #endif
-*/
+	
 	printk("S5PC11X_FREQ_TAB=%d , S5PC11X_MAXFREQLEVEL=%d\n",S5PC11X_FREQ_TAB,S5PC11X_MAXFREQLEVEL);
 
 	s5pc11x_cpufreq_level = S5PC11X_MAXFREQLEVEL;
