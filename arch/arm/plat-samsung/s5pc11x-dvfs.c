@@ -754,7 +754,7 @@ static int __init s5pc110_cpu_init(struct cpufreq_policy *policy)
 
 	if (policy->cpu != 0)
 		return -EINVAL;
-	policy->cur = policy->min = policy->max = s5pc110_getspeed(0);
+	policy->cur = policy->min = policy->max = 1000000;
 	//spin_lock_irqsave(&g_cpufreq_lock, irqflags);
 
 #ifdef DVFS_SYSFS_FREQ_TAB	
