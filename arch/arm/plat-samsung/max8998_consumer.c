@@ -93,9 +93,10 @@ static const unsigned int frequency_match_1DOT2GHZ[][4] = {
         {1200000, 1300, 1150, 1},
         {1000000, 1250, 1100, 2},
         {800000, 1200, 1100, 3},
-        {400000, 1050, 1100, 4},
-        {200000, 950, 1100, 5},
-        {100000, 950, 1000, 6},
+	{600000, 1100, 1100, 4},
+        {400000, 1050, 1100, 5},
+        {200000, 950, 1100, 6},
+        {100000, 950, 1000, 7},
 };
 const unsigned int (*frequency_match[2])[4] = {
         frequency_match_1GHZ,
@@ -126,9 +127,10 @@ static const unsigned int dvs_volt_table_1DOT2GHZ[][3] = {
         {L1, DVSARM1, DVSINT1},
         {L2, DVSARM1, DVSINT1},
         {L3, DVSARM2, DVSINT1},
-        {L4, DVSARM3, DVSINT1},
-        {L5, DVSARM4, DVSINT1},
-        {L6, DVSARM4, DVSINT2},
+        {L4, DVSARM2, DVSINT1},
+        {L5, DVSARM3, DVSINT1},
+        {L6, DVSARM4, DVSINT1},
+        {L7, DVSARM4, DVSINT2},
 
 };
 
@@ -192,7 +194,7 @@ void dvs_set_for_1dot2Ghz (int onoff) {
 	return;
 }
 
-extern int exp_UV_mV[7];
+extern int exp_UV_mV[8];
 
 static int set_max8998(unsigned int pwr, enum perf_level p_lv)
 {

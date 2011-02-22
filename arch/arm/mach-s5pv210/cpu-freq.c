@@ -53,7 +53,7 @@ unsigned int S5PC11X_MAXFREQLEVEL = 4;
 unsigned int S5PC11X_FREQ_TAB;
 static spinlock_t g_dvfslock = SPIN_LOCK_UNLOCKED;
 static unsigned int s5pc11x_cpufreq_level = 3;
-unsigned int s5pc11x_cpufreq_index = 3;
+unsigned int s5pc11x_cpufreq_index = 2;
 
 static char cpufreq_governor_name[CPUFREQ_NAME_LEN] = "conservative";// default governor
 static char userspace_governor[CPUFREQ_NAME_LEN] = "userspace";
@@ -118,9 +118,10 @@ static struct cpufreq_frequency_table s5pc110_freq_table_1d2GHZ[] = {
 	{L1, 1200*1000},
 	{L2, 1000*1000},
 	{L3, 800*1000},
-	{L4, 400*1000},
-	{L5, 200*1000},
-	{L6, 100*1000},
+	{L4, 600*1000},
+	{L5, 400*1000},
+	{L6, 200*1000},
+	{L7, 100*1000},
 	{0, CPUFREQ_TABLE_END},
 };
 
@@ -133,6 +134,7 @@ static unsigned char transition_state_1d2GHZ[][2] = {
         {5, 3},
         {6, 4},
         {7, 5},
+	{8, 6},
 };
 
 
@@ -162,6 +164,7 @@ static unsigned int s5pc110_thres_table_1d2GHZ[][2] = {
         {30, 70},
         {30, 70},
         {30, 70},
+	{30, 70},
 };
 
 static unsigned int  (*s5pc110_thres_table[2])[2] = {
@@ -188,6 +191,9 @@ static int get_dvfs_perf_level(enum freq_level_states freq_level, unsigned int *
 	case LEV_800MHZ:
 		freq = 800 * 1000;
 		break;
+        case LEV_600MHZ:
+                freq = 600 * 1000;
+                break;
 	case LEV_400MHZ:
 		freq = 400 * 1000;
 		break;
@@ -725,9 +731,9 @@ static int __init s5pc110_cpu_init(struct cpufreq_policy *policy)
 	//spin_lock_irqsave(&g_cpufreq_lock, irqflags);
 
 		S5PC11X_FREQ_TAB = 1;
-		S5PC11X_MAXFREQLEVEL = 6;
-		MAXFREQ_LEVEL_SUPPORTED = 7;
-		g_dvfs_high_lock_limit = 6;
+		S5PC11X_MAXFREQLEVEL = 7;
+		MAXFREQ_LEVEL_SUPPORTED = 8;
+		g_dvfs_high_lock_limit = 7;
 
 /*
 #if USE_1DOT2GHZ //jj

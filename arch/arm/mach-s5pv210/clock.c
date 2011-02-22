@@ -89,6 +89,8 @@ static const u32 s5p_sysout_clk_tab_1DOT2GHZ[][4] = {
 	{1000* MHZ, 667 *MHZ, 1000 *MHZ, 166 *MHZ},
 	// APLL:800,ARMCLK:800,HCLK_MSYS:200,MPLL:667,HCLK_DSYS:166,HCLK_PSYS:133,PCLK_MSYS:100,PCLK_DSYS:83,PCLK_PSYS:66
 	{800* MHZ, 667 *MHZ, 800 *MHZ, 166 *MHZ},
+	// APLL:600,ARMCLK:600,HCLK_MSYS:200,MPLL:667,HCLK_DSYS:166,HCLK_PSYS:133,PCLK_MSYS:100,PCLK_DSYS:83,PCLK_PSYS:66
+        {600* MHZ, 667 *MHZ, 600 *MHZ, 166 *MHZ},
 	// APLL:800,ARMCLK:400,HCLK_MSYS:200,MPLL:667,HCLK_DSYS:166,HCLK_PSYS:133,PCLK_MSYS:100,PCLK_DSYS:83,PCLK_PSYS:66
 	{800* MHZ, 667 *MHZ, 400 *MHZ, 166 *MHZ},
 	// APLL:800,ARMCLK:200,HCLK_MSYS:200,MPLL:667,HCLK_DSYS:166,HCLK_PSYS:133,PCLK_MSYS:100,PCLK_DSYS:83,PCLK_PSYS:66
@@ -105,6 +107,7 @@ static const u32 s5p_sys_clk_div0_tab_1DOT2GHZ[][DIV_TAB_MAX_FIELD] = {
         {0, 5, 5, 1, 3, 1, 4, 1, 3, 3, 0, 3},
         {0, 4, 4, 1, 3, 1, 4, 1, 3, 3, 0, 3},
         {0, 3, 3, 1, 3, 1, 4, 1, 3, 3, 0, 3},
+        {0, 2, 2, 1, 3, 1, 4, 1, 3, 3, 0, 3},
         {1, 3, 1, 1, 3, 1, 4, 1, 3, 3, 0, 3},
         {3, 3, 0, 1, 3, 1, 4, 1, 3, 3, 0, 3},
         {7, 3, 0, 0, 7, 0, 9, 0, 3, 3, 1, 7},
@@ -118,6 +121,7 @@ static const u32 s5p_sys_clk_mps_tab_1DOT2GHZ[][6] = {
         {150, 3, 1, 667, 12, 1},
         {125, 3, 1, 667, 12, 1},
         {100, 3, 1, 667, 12, 1},
+	{100, 4, 1, 667, 12, 1},
         {100, 3, 1, 667, 12, 1},
         {100, 3, 1, 667, 12, 1},
         {100, 3, 1, 667, 12, 1},

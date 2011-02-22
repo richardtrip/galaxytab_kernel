@@ -32,7 +32,7 @@
 #define dprintk(msg...) cpufreq_debug_printk(CPUFREQ_DEBUG_CORE, \
 						"cpufreq-core", msg)
 
-int exp_UV_mV[7];
+int exp_UV_mV[8];
 
 /**
  * The "cpufreq driver" - the arch- or hardware-dependent low
@@ -521,7 +521,7 @@ static ssize_t show_scaling_governor(struct cpufreq_policy *policy, char *buf)
 
 static ssize_t show_UV_mV_table(struct cpufreq_policy *policy, char *buf)
 {
-	return sprintf(buf, "%d %d %d %d %d %d %d\n", exp_UV_mV[0],exp_UV_mV[1],exp_UV_mV[2],exp_UV_mV[3],exp_UV_mV[4],exp_UV_mV[5],exp_UV_mV[6]);
+	return sprintf(buf, "%d %d %d %d %d %d %d %d\n", exp_UV_mV[0],exp_UV_mV[1],exp_UV_mV[2],exp_UV_mV[3],exp_UV_mV[4],exp_UV_mV[5],exp_UV_mV[6],exp_UV_mV[7]);
 //	return -EINVAL;
 }
 
@@ -530,7 +530,7 @@ static ssize_t store_UV_mV_table(struct cpufreq_policy *policy,
 {
 	unsigned int ret = -EINVAL;
 
-	ret = sscanf(buf, "%d %d %d %d %d %d %d", &exp_UV_mV[0],&exp_UV_mV[1],&exp_UV_mV[2],&exp_UV_mV[3],&exp_UV_mV[4],&exp_UV_mV[5],&exp_UV_mV[6]);
+	ret = sscanf(buf, "%d %d %d %d %d %d %d %d", &exp_UV_mV[0],&exp_UV_mV[1],&exp_UV_mV[2],&exp_UV_mV[3],&exp_UV_mV[4],&exp_UV_mV[5],&exp_UV_mV[6],&exp_UV_mV[7]);
 	if (ret != 1)
 		return -EINVAL;
 	else 
