@@ -233,7 +233,7 @@ static int set_max8998(unsigned int pwr, enum perf_level p_lv)
 		s_arm_voltage = voltage;	
 		
 	} else if(pwr == PMIC_INT) {
-		voltage = frequency_match_tab[p_lv][pwr + 1];
+		voltage = frequency_match_tab[p_lv][pwr + 1] - exp_UV_mV[p_lv];
 		if(voltage == s_int_voltage)
                         return ret;
 
