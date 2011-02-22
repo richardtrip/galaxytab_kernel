@@ -305,12 +305,12 @@ s32 fg_read_temp3(void)
 
 s32 fg_read_batt_temp(void)
 {
-//	if(battery_type == SDI_BATTERY_TYPE)
+	if(battery_type == SDI_BATTERY_TYPE)
 		return fg_read_temp2();
-//	else if(battery_type == ATL_BATTERY_TYPE)
-//		return fg_read_temp3();
-//	else
-//		return (s32)30000;
+	else if(battery_type == ATL_BATTERY_TYPE)
+		return fg_read_temp3();
+	else
+		return (s32)30000;
 }
 
 
