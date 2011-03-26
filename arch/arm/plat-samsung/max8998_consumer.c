@@ -399,7 +399,7 @@ void max8998_init(void)
 	max8998_ldo_disable_direct(MAX8998_LDO16);
 
 	// LCD ldo
-	max8998_ldo_set_voltage_direct(MAX8998_LDO17, 3300000, 3300000);
+	max8998_ldo_set_voltage_direct(MAX8998_LDO17, 2600000, 2600000);
 	max8998_ldo_enable_direct(MAX8998_LDO17);
 
 	//  Disable Camera LDOs when booting up
