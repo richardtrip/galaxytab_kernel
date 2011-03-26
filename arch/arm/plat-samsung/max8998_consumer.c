@@ -409,6 +409,10 @@ void max8998_init(void)
 	max8998_ldo_disable_direct(MAX8998_LDO14);
 	max8998_ldo_disable_direct(MAX8998_LDO15);
 
+	// RAM clock is changed // default 1.8V
+	max8998_ldo_set_voltage_direct(MAX8998_DCDC3, 1600000, 1600000);
+	max8998_ldo_enable_direct(MAX8998_DCDC3);
+
 	if(S5PC11X_FREQ_TAB) // for 1.2GHZ table
 	{
 		step_curr = L0;
