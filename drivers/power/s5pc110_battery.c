@@ -113,7 +113,7 @@ static void s3c_bat_status_update(struct power_supply *bat_ps);
 
 #define ADC_DATA_ARR_SIZE	6
 #define ADC_TOTAL_COUNT		10
-#define POLLING_INTERVAL	2000
+#define POLLING_INTERVAL	60000   //2000  //Reduced polling frequency
 #ifdef __TEST_MODE_INTERFACE__
 #define POLLING_INTERVAL_TEST	1000
 #endif /* __TEST_MODE_INTERFACE__ */
