@@ -2934,7 +2934,7 @@ static int isx005_get_auto_focus_status(struct v4l2_subdev *sd, struct v4l2_cont
 				break;
 				
 			case FLASHMODE_ON:
-				isx005_flash(0, sd);
+				//isx005_flash(0, sd);
 				isx005_i2c_write_multi(client, 0x3200, 0x0000, 1); //AE on
 				break;
 				
@@ -3067,7 +3067,7 @@ static int isx005_get_auto_focus_status(struct v4l2_subdev *sd, struct v4l2_cont
 				break;
 				
 			case FLASHMODE_ON:
-				isx005_flash(0, sd);
+				//isx005_flash(0, sd);
 				isx005_i2c_write_multi(client, 0x3200, 0x0000, 1); //AE on
 				break;
 				
