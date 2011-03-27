@@ -574,14 +574,14 @@ s32 fg_read_temp3(void)
 		temper *= 1000;
 		temper += data[0] * 39 / 10;
 
-//		if(temper >=60000)
-//			temper = temper * trim1_1/100 - trim1_2;
-//		else
-//			temper = temper * trim2_1/100 - trim2_2;
+		if(temper >=60000)
+			temper = temper * trim1_1/100 - trim1_2;
+		else
+			temper = temper * trim2_1/100 - trim2_2;
 	}
 
-//	return temper;
-
+	return temper;
+#if 0
 	array_size = ARRAY_SIZE(atl_temp_table);
 	for (i = 0; i < (array_size - 1); i++) {
 		if (i == 0) {
@@ -603,17 +603,18 @@ s32 fg_read_temp3(void)
 //	printk("ATL temp : fuel_temp(%d), table_temp(%d)\n", temper, table_temp);
 
 	return (table_temp * 100);
+#endif
 }
 
 
 s32 fg_read_batt_temp(void)
 {
 	if(battery_type == SDI_BATTERY_TYPE)
-		return fg_read_temp2();
-	else if(battery_type == ATL_BATTERY_TYPE)
+//		return fg_read_temp2();
+//	else if(battery_type == ATL_BATTERY_TYPE)
 		return fg_read_temp3();
-	else
-		return (s32)30000;
+//	else
+//		return (s32)30000;
 }
 
 
